@@ -105,6 +105,7 @@ body {
   }
   .dummy-2 {
     font-size: 1rem;
+    text-align: center;
   }
   .delete {
     font-size: 0.7rem;
