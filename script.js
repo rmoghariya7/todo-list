@@ -134,6 +134,12 @@ function deleteTodo() {
     e.target.closest(".task-container").remove();
     const currItem = JSON.parse(localStorage.getItem("items"));
     totalTask.textContent = currItem?.length ? currItem?.length : 0;
+
+    const newArr = JSON.parse(localStorage.getItem("items"));
+    const filteredArray = newArr.filter((e) => e.state == true);
+    const completedTask = filteredArray?.length ? filteredArray?.length : 0;
+    console.log(completedTask);
+    taskCompleted.textContent = completedTask;
   });
 }
 
@@ -145,6 +151,13 @@ function editTodo() {
     const numberClass = e.target.closest(".task-container")?.id;
 
     if (!e.target.classList.contains("edit")) return;
+
+    if (
+      e.target.parentElement.parentElement.firstElementChild.hasAttribute(
+        "checked"
+      )
+    )
+      return;
     const pTag =
       e.target.parentElement.parentElement.querySelector(".todoList");
     console.log(pTag);
